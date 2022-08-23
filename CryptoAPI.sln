@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoAPI.Models", "CryptoAPI.Models\CryptoAPI.Models.csproj", "{709B14AF-05EB-4D0A-9F51-CC64A7FDCD89}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoAPI", "CryptoAPI\CryptoAPI.csproj", "{F8F8A5F9-5851-437F-98B0-5374EBE151EC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{709B14AF-05EB-4D0A-9F51-CC64A7FDCD89} = {709B14AF-05EB-4D0A-9F51-CC64A7FDCD89}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
