@@ -5,12 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Extensions.Configuration" Version="0.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\CryptoAPI.Models\CryptoAPI.Models.csproj" />
   </ItemGroup>
 
 </Project>
