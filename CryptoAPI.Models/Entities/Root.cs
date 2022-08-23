@@ -10,5 +10,6 @@ namespace CryptoAPI.Models.Entities
     {
         public List<Asset> assets { get; set; }
         public string next { get; set; }
+
     }
 }
