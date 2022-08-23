@@ -25,16 +25,11 @@ namespace CryptoAPI.Controllers
 
 		public async Task<Root> GetProductComposition()
 		{
-
-			_logger.LogInformation("API Before API");
 			var crypt = await _cryptingAppAPI.GetAll();
-			_logger.LogInformation("API After API");
 			if (crypt == null)
 			{
-				_logger.LogInformation("NULL");
 				return null;
 			}
-			_logger.LogInformation("API After NULL");
 			return crypt;
 		}
 
@@ -43,8 +38,6 @@ namespace CryptoAPI.Controllers
 
 		public async Task<Root> GetProductComposition(int size)
 		{
-
-			_logger.LogInformation("API Getting information about product");
 			var crypt = await _cryptingAppAPI.GetBySize(size);
 			if (crypt == null)
 			{
