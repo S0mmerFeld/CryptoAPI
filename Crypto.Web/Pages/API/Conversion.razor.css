@@ -1,0 +1,66 @@
+﻿h3 {
+    font-size: 36px;
+}
+
+body {
+}
+button {
+    border: 2px solid black;
+}
+
+.convert_text {
+    text-align: center;
+    text-transform: uppercase;
+    color: darkgreen;
+    font-size: 24px;
+}
+
+
+
+.calculate {
+    border: 2px solid;
+    border-radius: 6px;
+    width: 30%;
+    margin: 20px 0px;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px 0px;
+    background-color: #4CAF50;
+}
+.calculate:hover {
+    background-color: rgba(255,255,255,0.1);
+    background-color: cornflowerblue;
+}
+
+.but {
+    border: 2px solid;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px 0px;
+    background-color: lightsteelblue;
+    width: 32%;
+    margin-top: 30px;
+    margin-left: 8px;
+}
+
+    .but:hover {
+        background-color: rgba(255,255,255,0.1);
+        background-color: cornflowerblue;
+    }
+
+.container_currency {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+input {
+    border: 2px solid red;
+    padding: 5px;
+    border-radius: 4px;
+    margin:10px 0px;
+    width: 30%;
+}

@@ -1,0 +1,98 @@
+﻿@page "/"
+@using Crypto.Web.Services.Interfaces
+@using Crypto.Web.BlazorDTOs.CryptingApp_DTO
+@inject HttpClient Http
+@inject ICryptoService CryptoService
+@inject NavigationManager NavigationManager
+@inject IStringLocalizer<Resource> localizer
+
+
+<div class="form">
+    <h3 Style="text-align:center">@localizer["index_search_string"]</h3>
+    <label>
+        @localizer["index_title"]
+        <input @bind="src" />
+    </label>
+    <br />
+    <div>
+
+        <button class="Get" @onclick="Search">
+            Get Crypto
+        </button>
+        <button class="Reset" @onclick="Reset">
+            Reset Crypto
+        </button>
+    </div>
+</div>
+
+
+<div class="d-flex flex-wrap  flex-grow-1  justify-space-between" Elevation="0">
+    @foreach (var item in composition)
+    {
+        @if (item.name != "")
+        {
+            <div class="but" @onclick="@(() => ShowCurrency(item.asset_id))">
+
+                <h4>@item.name</h4>
+
+                <h5>$@Math.Round(item.price, 10) </h5>
+
+                @if (item.change_1h < 0)
+                {
+                    <h6 style="color: Red;">
+                        @Math.Round(item.change_1h, 10)%
+                    </h6>
+                }
+                else
+                {
+                    <h6 style="color: Green;">
+                        @Math.Round(item.change_1h, 10)%
+                    </h6>
+                }
+            </div>
+        }
+    }
+</div>
+
+
+
+@code {
+    private IEnumerable<AssetDTO> composition = new List<AssetDTO>();
+    string src;
+    string result_text;
+
+    protected override async Task OnInitializedAsync()
+    {
+        composition = await CryptoService.GetAll();
+    }
+
+    void ShowCurrency(string asset_id)
+    {
+        NavigationManager.NavigateTo($"/ShowCurrency/{asset_id}");
+    }
+
+    async void Search()
+    {
+        if (src != null && src != "")
+        {
+            composition = await CryptoService.GetCrypto(src);
+
+            if (composition == null)
+            {
+                composition = await CryptoService.GetAll();
+            }
+            else
+            {
+                result_text = "";
+            }
+        }
+        StateHasChanged();
+    }
+
+    async void Reset()
+    {
+        composition = await CryptoService.GetAll();
+        src = "";
+        StateHasChanged();
+    }
+}

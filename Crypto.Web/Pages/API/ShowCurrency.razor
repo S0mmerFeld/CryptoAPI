@@ -1,0 +1,101 @@
+﻿@page "/ShowCurrency/{str}"
+@using Crypto.Web.Services.Interfaces
+@using Crypto.Web.BlazorDTOs.CryptingApp_DTO
+@inject HttpClient Http
+@inject ICryptoService CryptoService
+@inject NavigationManager NavigationManager
+@inject IStringLocalizer<Resource> localizer
+
+<h3>Information about Currency</h3>
+
+
+
+
+
+
+@if (cur == null)
+{
+    <span><em>Loading...</em></span> }
+
+else
+{
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>price</th>
+                <th>volume_24h</th>
+                <th>change_1h</th>
+                <th>change_24h</th>
+                <th>change_7d</th>
+                <th>status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@cur.name</td>
+                <td>@Math.Round(@cur.price, 10)</td>
+                <td>@Math.Round(@cur.volume_24h, 10)</td>
+
+                @if (cur.change_1h < 0)
+                {
+                    <td style="color: Red">@Math.Round(@cur.change_1h, 10)%</td>
+                }
+                else
+                {
+                    <td style="color: Green">@Math.Round(@cur.change_1h, 10)%</td>
+                }
+
+                @if (cur.change_1h < 0)
+                {
+                    <td style="color: Red">@Math.Round(@cur.change_24h, 10)%</td>
+                }
+                else
+                {
+                    <td style="color: Green">@Math.Round(@cur.change_24h, 10)%</td>
+                }
+
+                @if (cur.change_1h < 0)
+                {
+                    <td style="color: Red">@Math.Round(@cur.change_7d, 10)%</td>
+                }
+                else
+                {
+                    <td style="color: Green">@Math.Round(@cur.change_7d, 10)%</td>
+                }
+
+                <td>@cur.status</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+
+}
+
+
+
+
+@code {
+    [Parameter]
+    public string Str { get; set; }
+    AssetDTO cur;
+
+    private IEnumerable<AssetDTO> composition = new List<AssetDTO>();
+
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+            composition = await CryptoService.GetAll();
+            cur = composition.FirstOrDefault(o => o.asset_id == Str);
+
+
+
+
+    }
+
+}
