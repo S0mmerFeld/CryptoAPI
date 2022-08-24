@@ -122,5 +122,14 @@ namespace Crypto.Web.Shared.ResourceFiles {
                 return ResourceManager.GetString("index_title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information about Currency.
+        /// </summary>
+        public static string ShowCurrency_Information {
+            get {
+                return ResourceManager.GetString("ShowCurrency_Information", resourceCulture);
+            }
+        }
     }
 }

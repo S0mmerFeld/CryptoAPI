@@ -138,4 +138,7 @@
   <data name="index_title" xml:space="preserve">
     <value>Введіть ім'я валюти для пошуку</value>
   </data>
+  <data name="ShowCurrency_Information" xml:space="preserve">
+    <value>Інформація про валюту</value>
+  </data>
 </root>

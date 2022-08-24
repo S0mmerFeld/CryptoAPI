@@ -138,4 +138,7 @@
   <data name="index_title" xml:space="preserve">
     <value>Enter search name</value>
   </data>
+  <data name="ShowCurrency_Information" xml:space="preserve">
+    <value>Information about Currency</value>
+  </data>
 </root>
